@@ -271,6 +271,22 @@ impl ServiceId {
             ServiceId::Pni(pni) => pni.into(),
         }
     }
+
+    /// Returns the ACI inside this service ID, if it is an ACI.
+    pub fn aci(self) -> Option<Aci> {
+        match self {
+            ServiceId::Aci(aci) => Some(aci),
+            _ => None,
+        }
+    }
+
+    /// Returns the PNI inside this service ID, if it is a PNI.
+    pub fn pni(self) -> Option<Pni> {
+        match self {
+            ServiceId::Pni(pni) => Some(pni),
+            _ => None,
+        }
+    }
 }
 
 impl fmt::Debug for ServiceId {
